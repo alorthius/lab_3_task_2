@@ -4,15 +4,29 @@ import json
 
 
 def read_file(path: str) -> dict:
+    """
+    Read json file by its path. Return it as a dictionary.
+    Return None if the path argument is not a string or
+    the file is not found by its path.
+    """
     if not isinstance(path, str):
         return None
 
-    with open(path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    return data
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return data
+
+    except FileNotFoundError:
+        print('\nInvalid path. Try again.')
+        return None
 
 
 def ask_user(obj) -> str:
+    """
+    Recursive function to search for keys and values in the
+    dictionary.
+    """
 
     if isinstance(obj, dict):
         dict_keys = list(obj.keys())
@@ -47,5 +61,11 @@ def ask_user(obj) -> str:
     
 
 def main_func(path: str):
+    """
+    Find the value of the user's key in the json object.
+    """
+    if not isinstance(path, str):
+        return None
     data = read_file(path)
-    print(ask_user(data))
+    if data:
+        print(ask_user(data))
