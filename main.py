@@ -1,6 +1,6 @@
 """
+GitHub link: https://github.com/alorthius/lab_3_task_2
 """
-import doctest
 import json
 
 
@@ -21,8 +21,8 @@ def read_file(path: str) -> dict:
         return None
 
     try:
-        with open(path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        with open(path, 'r', encoding='utf-8') as json_file:
+            data = json.load(json_file)
         return data
 
     except FileNotFoundError:
@@ -47,7 +47,7 @@ def ask_user(obj) -> str:
         users_input = str(
             input(f'\nChoose the dictionary key:\n{dict_keys}\n'))
         if users_input not in dict_keys:
-            return f'Incorrect key. Try again.\n'
+            return 'Incorrect key. Try again.\n'
 
         return ask_user(obj[users_input])
 
