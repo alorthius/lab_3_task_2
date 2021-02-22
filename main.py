@@ -52,21 +52,26 @@ def ask_user(obj) -> str:
         return ask_user(obj[users_input])
 
     elif isinstance(obj, list):
-
-        indexes = [num for num in range(len(obj))]
-        if len(indexes) > 1:
-            users_input = int(input(
-                f'\nChoose the index of the list element:\n{indexes}\n'))
-
-            if users_input not in indexes:
-                return f'Incorrect key. Try again.\n'
-
-            return ask_user(obj[users_input])
-
-        elif len(indexes) == 1:  # there is no need to ask user
-            return ask_user(obj[0])
-        else:  # empty list
+        list_displaying = str(input('\nThis object is a list. Do you want to display it?\nY/N\n'))
+        if list_displaying == 'Y' or list_displaying == 'y':
             return f'\nThe searched value is:\n{obj}\n'
+        elif list_displaying == 'N' or list_displaying == 'n':
+            indexes = [num for num in range(len(obj))]
+            if len(indexes) > 1:
+                users_input = int(input(
+                    f'\nChoose the index of the list element:\n{indexes}\n'))
+
+                if users_input not in indexes:
+                    return f'Incorrect key. Try again.\n'
+
+                return ask_user(obj[users_input])
+
+            elif len(indexes) == 1:  # there is no need to ask user
+                return ask_user(obj[0])
+            else:  # empty list
+                return f'\nThe searched value is:\n{obj}\n'
+        else:
+            return f'\nInvalid answer.'
 
     else:
         return f'\nThe searched value is:\n{obj}\n'
@@ -83,3 +88,5 @@ def main_func(path: str):
         return None
     data = read_file(path)
     print(ask_user(data))
+
+main_func('frienfs_list_Obama.json')
