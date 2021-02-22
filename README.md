@@ -2,7 +2,7 @@ Module to work and navigate through the json object. Find and display step by st
 
 If the object is a dictionary, the user will be given a list of its keys to pick one, and so on till the value will be a string. If it is a list, the user will be asked whether he wants to display all list, or choose the list index and continue the search.
 ***
-## Example of running on the file [friends_list_Obama.json]():
+## Example of running on the file [friends_list_Obama.json](https://github.com/alorthius/lab_3_task_2/blob/main/friends_list_Obama.json):
 
 - ### Firstly, user is to choose one dictionary key
 
